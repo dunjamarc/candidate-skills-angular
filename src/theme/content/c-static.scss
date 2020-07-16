@@ -1,0 +1,57 @@
+.static {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint($tablet) {
+    display: block;
+  }
+
+  h2 {
+    margin: 20px 0;
+  }
+
+  .text {
+    @include breakpoint($tablet) {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      order: 1;
+    }
+
+    &:nth-child(3) {
+      order: 3;
+    }
+
+    p {
+      text-align: justify;
+    }
+  }
+
+  .gallery {
+    order: 2;
+
+    @include breakpoint($tablet) {
+      width: 45%;
+      float: right;
+    }
+
+    .nav {
+      position: relative;
+
+      &:first-of-type {
+        left: 5px;
+      }
+
+      &:last-of-type {
+        right: 5px;
+      }
+    }
+
+    .each-slide {
+      div {
+        height: 300px;
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+/*
+ * Global application theme.
+ * Framework overrides and customization goes here.
+ */
+// Layout
+@import "layout/l-header";
+@import "layout/l-content";
+
+// Content
+@import "content/c-home";
+@import "content/c-skills";
+@import "content/c-static";

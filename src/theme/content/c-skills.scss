@@ -1,0 +1,188 @@
+.skills {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  @include breakpoint($tablet) {
+    flex-direction: row;
+  }
+
+  .skills-list {
+    order: 1;
+
+    h2 {
+      margin-top: 10px;
+
+      @include breakpoint($tablet) {
+        margin-top: 30px;
+      }
+    }
+
+    @include breakpoint($tablet) {
+      width: 50%;
+      float: none;
+    }
+
+    .row {
+      position: relative;
+
+      &:first-child {
+        p:nth-child(3) {
+          width: 100px;
+        }
+
+        p:nth-child(4) {
+          text-align: center;
+        }
+      }
+
+      p {
+        width: 25%;
+      }
+
+      .year {
+        width: 100px;
+        margin-right: 45px;
+        margin-left: auto;
+
+        @include breakpoint($tablet) {
+          width: 25%;
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+
+      .bar {
+        margin-right: 45px;
+        margin-top: 10px;
+
+        @include breakpoint($tablet) {
+          margin-right: 0;
+          margin-top: 0;
+        }
+      }
+
+      .cta {
+        border: none;
+        text-align: center;
+        width: 10%;
+        position: absolute;
+        top: -5px;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint($tablet) {
+          position: static;
+          display: block;
+          width: 25%;
+        }
+
+        i {
+          margin: 5px;
+          cursor: pointer;
+          color: $navy;
+
+          &.fa-edit {
+            &:hover {
+              color: green;
+            }
+          }
+
+          &.fa-trash-alt {
+            &:hover {
+              color: $redish;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .skill-form {
+    order: 2;
+
+    @include breakpoint($tablet) {
+      width: 45%;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 10px;
+
+      @include breakpoint($tablet) {
+        padding: 0 10px 0 0;
+      }
+
+      div {
+        width: 100%;
+
+        @include breakpoint($tablet) {
+          width: 45%;
+          display: flex;
+          flex-direction: column;
+        }
+
+        &:first-child {
+          order: 1;
+        }
+
+        &:nth-child(2) {
+          order: 3;
+
+          @include breakpoint($tablet) {
+            order: 2;
+          }
+        }
+
+        &:nth-child(3) {
+          order: 2;
+
+          @include breakpoint($tablet) {
+            order: 3;
+          }
+        }
+
+        label {
+          font-size: 12px;
+        }
+
+        input,
+        select {
+          font-size: 15px;
+          padding: 7px;
+          margin-bottom: 10%;
+          width: 100%;
+          border: 1px solid $gray;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  button {
+    padding: 10px 20px;
+    color: $white;
+    background-color: $navy;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    border: 1px solid $navy;
+    position: relative;
+    outline: none;
+
+    &:hover {
+      background-color: $navy-transparent;
+    }
+
+    &:active {
+      top: 2px;
+    }
+
+    @include breakpoint($tablet) {
+      margin-left: 0;
+    }
+  }
+}
