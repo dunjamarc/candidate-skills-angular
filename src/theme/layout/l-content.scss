@@ -40,6 +40,10 @@ h2 {
   font-weight: 600;
 }
 
+p {
+  margin: 0;
+}
+
 header,
 footer {
   background-color: $navy;
@@ -49,4 +53,20 @@ footer {
 
 footer {
   text-align: right;
+}
+
+app-root {
+  display: flex;
+  flex-flow: column;
+}
+
+app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  router-outlet + * {
+    flex: 1 1 auto;
+    padding-top: 2em;
+    background-size: auto 1100px;
+  }
 }
