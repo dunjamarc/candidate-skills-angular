@@ -1,30 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { SkillService } from '@app/services/skill.service';
 
-import { QuoteService } from './quote.service';
-
+import { Skill } from '@app/@core/model/skill';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  quote: string | undefined;
   isLoading = false;
+  skills: Skill[];
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private skillService: SkillService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+    this.getSkills();
+  }
+
+  getSkills(): void {
+    this.skillService.getSkills().subscribe((skills) => (this.skills = skills));
   }
 }

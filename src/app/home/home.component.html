@@ -1,7 +1,18 @@
 <div class="container home">
   <div class="skills-list">
     <h2>Skill List</h2>
-    <!-- Skills list component goes here -->
+    <div class="skills-wrap">
+      <div class="row">
+        <p><b>Skill Name</b></p>
+        <p><b>Skill Year Aquired</b></p>
+        <p><b>Skill Rating</b></p>
+      </div>
+      <div class="row" *ngFor="let skill of skills">
+        <p class="name">{{ skill.name }}</p>
+        <p class="year"><span>Since </span>{{ skill.year }}</p>
+        <div class="bar"><span [ngStyle]="{ width: skill.rating * 10 + 'px' }"></span></div>
+      </div>
+    </div>
   </div>
   <div class="basic-data left">
     <div class="full-name">

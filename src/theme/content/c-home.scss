@@ -33,6 +33,7 @@
 
     .row {
       border-bottom: 1px solid $light-gray;
+      margin: 0;
 
       @include breakpoint($tablet) {
         border-bottom: none;
