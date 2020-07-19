@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 import { Skill } from '@app/@core/model/skill';
 
 const routes = {
-  deletedSkill: (skillId: number) => `http://localhost:3000/skills/${skillId}`,
+  singleSkill: (skillId: number) => `http://localhost:3000/skills/${skillId}`,
   skillsList: () => 'http://localhost:3000/skills',
-  // predictions: () => `/api/predictions`,
-  // predictionsRemove: () => `/api/predictions/remove`
 };
 
 @Injectable({
@@ -26,23 +24,23 @@ export class SkillService {
   }
 
   deleteSkill(id: number): Observable<any> {
-    return this.httpClient.delete(routes.deletedSkill(id)).pipe(
+    return this.httpClient.delete(routes.singleSkill(id)).pipe(
       map((body: any) => body),
       catchError(() => of(false))
     );
   }
 
-  // addProducts(data: NewProduct[]): Observable<any> {
-  //   return this.httpClient.post(routes.predictions(), data).pipe(
-  //     map((body: Response) => body),
-  //     catchError(() => of(false))
-  //   );
-  // }
+  addSkill(data: Skill): Observable<any> {
+    return this.httpClient.post(routes.skillsList(), data).pipe(
+      map((body: any) => body),
+      catchError(() => of(false))
+    );
+  }
 
-  // removeProduct(data: any): Observable<any> {
-  //   return this.httpClient.post(routes.predictionsRemove(), data).pipe(
-  //     map((body: any) => body),
-  //     catchError((error: any) => throwError(error))
-  //   );
-  // }
+  updateSkill(id: number, data: Skill): Observable<any> {
+    return this.httpClient.put(routes.singleSkill(id), data).pipe(
+      map((body: any) => body),
+      catchError(() => of(false))
+    );
+  }
 }
