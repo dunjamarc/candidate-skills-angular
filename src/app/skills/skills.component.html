@@ -29,20 +29,19 @@
     <form>
       <div>
         <label for="skill-name">Skill Name</label>
-        <input id="skill-name" type="text" [value]="skillName" (change)="updateSkillName($event)" />
+        <input id="skill-name" type="text" [value]="skillName" (change)="updateSkillProp($event)" />
       </div>
       <div>
         <label for="skill-rating">Skill Rating</label>
-        <select id="skill-rating" (change)="updateSkillRating($event)">
-          <!-- <option selected hidden>{{ skillRating }}</option> -->
+        <select id="skill-rating" (change)="updateSkillProp($event)">
           <option *ngFor="let n of rates" [selected]="skillRating == n">{{ n }}</option>
         </select>
       </div>
       <div>
         <label for="skill-year">Skill Year Aquired</label>
-        <input id="skill-year" type="number" [value]="skillYear" (change)="updateSkillYear($event)" />
+        <input id="skill-year" type="number" [value]="skillYear" (change)="updateSkillProp($event)" />
       </div>
     </form>
-    <button (click)="updateSkill()">SUBMIT</button>
+    <button (click)="!skillName || !skillYear ? false : handleClick()">SUBMIT</button>
   </div>
 </div>

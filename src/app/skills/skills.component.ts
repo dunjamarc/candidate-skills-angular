@@ -33,6 +33,20 @@ export class SkillsComponent implements OnInit {
     this.skillService.deleteSkill(id).subscribe(() => this.getSkills());
   }
 
+  updateSkill() {
+    this.skillService.updateSkill(this.skillId, this.skillBody).subscribe(() => {
+      this.getSkills();
+      this.clearForm();
+    });
+  }
+
+  createSkill() {
+    this.skillService.addSkill(this.skillBody).subscribe(() => {
+      this.getSkills();
+      this.clearForm();
+    });
+  }
+
   editSkill(skill: Skill): void {
     this.changeSkill = 'Edit';
 
@@ -42,32 +56,33 @@ export class SkillsComponent implements OnInit {
     this.skillRating = skill.rating;
   }
 
-  updateSkill() {
+  updateSkillProp(event: any) {
+    if (event.target.id === 'skill-name') {
+      this.skillName = event.target.value;
+    } else if (event.target.id === 'skill-rating') {
+      this.skillRating = event.target.value;
+    } else {
+      this.skillYear = event.target.value;
+    }
+  }
+
+  clearForm() {
+    this.skillId = null;
+    this.skillName = '';
+    this.skillYear = null;
+    this.skillRating = 1;
+    this.changeSkill = 'Add';
+  }
+
+  handleClick() {
+    let newSkillId;
+    newSkillId = this.changeSkill === 'Add' ? this.skills.length : this.skillId;
     this.skillBody = {
-      id: this.skillId,
+      id: newSkillId,
       name: this.skillName,
       year: this.skillYear,
       rating: this.skillRating,
     };
-    this.skillService.updateSkill(this.skillId, this.skillBody).subscribe(() => {
-      this.getSkills();
-      this.skillId = null;
-      this.skillName = '';
-      this.skillYear = null;
-      this.skillRating = 1;
-      this.changeSkill = 'Add';
-    });
-  }
-
-  updateSkillName(event: any) {
-    this.skillName = event.target.value;
-  }
-
-  updateSkillYear(event: any) {
-    this.skillYear = event.target.value;
-  }
-
-  updateSkillRating(event: any) {
-    this.skillRating = event.target.value;
+    this.changeSkill === 'Add' ? this.createSkill() : this.updateSkill();
   }
 }
