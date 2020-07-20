@@ -14,6 +14,7 @@ npm install
 2. Launch development server, and open `localhost:4200` in your browser:
 
 ```sh
+json-server --watch db.json
 npm start
 ```
 
