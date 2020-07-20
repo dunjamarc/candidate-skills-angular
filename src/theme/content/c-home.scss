@@ -89,8 +89,6 @@
 
       .bar {
         width: 100px;
-        border: 2px solid $gray-blue;
-        border-radius: 6px;
         box-sizing: content-box;
         margin: 0 0 10px auto;
 
@@ -98,11 +96,8 @@
           margin: 0;
         }
 
-        span {
-          display: block;
-          height: 10px;
+        .progress-bar {
           background-color: $navy;
-          border-radius: 5px;
         }
       }
     }

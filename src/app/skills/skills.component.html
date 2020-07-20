@@ -16,7 +16,15 @@
       <div class="row" *ngFor="let skill of skills">
         <p class="name">{{ skill.name }}</p>
         <p class="year"><span>Since </span>{{ skill.year }}</p>
-        <div class="bar"><span [ngStyle]="{ width: skill.rating * 10 + 'px' }"></span></div>
+        <div class="progress bar">
+          <div
+            class="progress-bar"
+            role="progressbar"
+            [ngStyle]="{ width: skill.rating * 10 + '%' }"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
         <div class="cta">
           <i class="fas fa-edit" (click)="editSkill(skill)"></i>
           <i class="fas fa-trash-alt" (click)="deleteSkill(skill.id)"></i>
