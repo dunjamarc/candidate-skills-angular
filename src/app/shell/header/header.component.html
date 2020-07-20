@@ -1,29 +1,3 @@
-<!-- <header>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="https://github.com/ngx-rocket" translate>APP_NAME</a>
-		<button class="navbar-toggler" type="button" aria-controls="navbar-menu" aria-label="Toggle navigation"
-			(click)="toggleMenu()" [attr.aria-expanded]="!menuHidden">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div id="navbar-menu" class="collapse navbar-collapse float-xs-none" [ngbCollapse]="menuHidden">
-			<div class="navbar-nav">
-				<a class="nav-item nav-a text-uppercase" routera="/home" routeraActive="active">
-					<i class="fas fa-home"></i>
-					<span translate>Home</span>
-				</a>
-				<a class="nav-item nav-a text-uppercase" routera="/about" routeraActive="active">
-					<i class="fas fa-question-circle"></i>
-					<span translate>About</span>
-				</a>
-			</div>
-			<div class="navbar-nav ml-auto">
-				<app-language-selector inNavbar="true" menuClass="dropdown-menu dropdown-menu-right">
-				</app-language-selector>
-			</div>
-		</div>
-	</nav>
-</header> -->
-
 <header>
   <div class="container">
     <nav class="nav-wrapper">
@@ -39,21 +13,21 @@
           <a href="/static">STATIC</a>
         </li>
       </ul>
-      <span class="burger">
+      <span class="burger" (click)="addClass()">
         <i class="fas fa-bars"></i>
       </span>
     </nav>
   </div>
-  <div class="mobile-nav">
+  <div class="mobile-nav" [class.show]="active">
     <ul class="menu">
       <li>
-        <a href="/home">HOME</a>
+        <a href="/home" (click)="addClass()">HOME</a>
       </li>
       <li>
-        <a href="/skills">SKILLS</a>
+        <a href="/skills" (click)="addClass()">SKILLS</a>
       </li>
       <li>
-        <a href="/static">STATIC</a>
+        <a href="/static" (click)="addClass()">STATIC</a>
       </li>
     </ul>
   </div>

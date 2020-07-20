@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  menuHidden = true;
+  active = false;
 
   constructor() {}
 
   ngOnInit() {}
 
-  toggleMenu() {
-    this.menuHidden = !this.menuHidden;
+  addClass() {
+    this.active = !this.active;
   }
 }
